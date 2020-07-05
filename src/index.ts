@@ -1,0 +1,22 @@
+import "reflect-metadata"
+import {ApolloServer} from 'apollo-server';
+import {buildSchema} from 'type-graphql';
+import {LecturerResolver} from './resolver/LecturerResolver';
+
+async function bootstrap(): Promise<void> {
+    const schema = await buildSchema({
+        resolvers: [
+            LecturerResolver
+        ],
+        emitSchemaFile: true
+    })
+
+    const server = new ApolloServer({
+        schema
+    })
+
+    server.listen()
+        .then(({url}) => console.log(`Server ready at ${url}`));
+}
+
+bootstrap()
