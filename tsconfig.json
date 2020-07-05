@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "target": "es2017",
+    "module": "commonjs",
+    "lib": ["es2017", "esnext.asynciterable"],
+    "noEmitOnError": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "rootDir": "src",
+    "noEmitHelpers": true,
+    "moduleResolution": "Node",
+    "importHelpers": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": false,
+    "esModuleInterop": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "pretty": false,
+    "allowJs": false,
+    "allowUnreachableCode": false,
+    "alwaysStrict": false
+  },
+  "exclude": ["node_modules"]
+}
