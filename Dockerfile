@@ -15,7 +15,7 @@ FROM node:alpine
 ENV NODE_ENV=production
 
 WORKDIR /usr/src/app/
-RUN addgroup -S gateway && adduser -S portal -G gateway
+RUN addgroup -S gateway && adduser -S gateway -G gateway
 COPY --from=build /usr/src/app /usr/src/app
 
 USER gateway
