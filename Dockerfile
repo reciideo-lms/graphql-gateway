@@ -1,0 +1,24 @@
+FROM node:latest AS build
+
+WORKDIR /usr/src/app
+COPY package.json yarn.lock /usr/src/app/
+RUN yarn install
+COPY . /usr/src/app/
+RUN ["yarn", "build"]
+RUN rm -rf /usr/src/app/node_modules
+RUN yarn install --prod
+
+
+
+FROM node:alpine
+
+ENV NODE_ENV=production
+
+WORKDIR /usr/src/app/
+RUN addgroup -S gateway && adduser -S portal -G gateway
+COPY --from=build /usr/src/app /usr/src/app
+
+USER gateway
+EXPOSE 4000
+
+ENTRYPOINT ["node", "dist/index"]
