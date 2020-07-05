@@ -8,7 +8,10 @@ async function bootstrap(): Promise<void> {
         resolvers: [
             LecturerResolver
         ],
-        emitSchemaFile: true
+        emitSchemaFile: {
+            commentDescriptions: true,
+            sortedSchema: true,
+        }
     })
 
     const server = new ApolloServer({

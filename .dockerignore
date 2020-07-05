@@ -1,0 +1,5 @@
+.dependabot/
+.github/
+.idea/
+dist/
+node_modules/

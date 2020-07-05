@@ -15,10 +15,11 @@ FROM node:alpine
 ENV NODE_ENV=production
 
 WORKDIR /usr/src/app/
-RUN addgroup -S gateway && adduser -S gateway -G gateway
+#TODO Generate schema in build process
+#RUN addgroup -S gateway && adduser -S gateway -G gateway
 COPY --from=build /usr/src/app /usr/src/app
 
-USER gateway
+#USER gateway
 EXPOSE 4000
 
 ENTRYPOINT ["node", "dist/index"]
