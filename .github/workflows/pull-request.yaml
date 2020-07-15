@@ -1,0 +1,38 @@
+name: Test and build
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      - run: yarn install
+      - uses: actions/cache@v2
+        env:
+          cache-name: yarn-cache
+        with:
+          path: ~/.cache/yarn
+          key: yarn-packages-${{ hashFiles('yarn.lock') }}
+          restore-keys: yarn-packages-
+
+  build:
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      - run: yarn install
+      - run: yarn build
+
+#  test:
+#    needs: install
+#    runs-on: ubuntu-latest
+#    steps:
+
