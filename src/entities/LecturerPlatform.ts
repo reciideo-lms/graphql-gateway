@@ -1,13 +1,13 @@
-import {Field, ID, ObjectType} from 'type-graphql';
+import { Field, ID, ObjectType } from 'type-graphql'
 
 @ObjectType()
 export class LecturerPlatform {
-    @Field(() => ID)
-    id: string;
+  @Field(() => ID)
+  id: string
 
-    @Field(() => String)
-    platform: string;
+  @Field(() => String)
+  platform: string
 
-    @Field(() => String)
-    url: string;
+  @Field(() => String)
+  url: string
 }
