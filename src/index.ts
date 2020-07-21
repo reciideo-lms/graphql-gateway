@@ -22,7 +22,7 @@ async function bootstrap (): Promise<void> {
     container: Container,
     emitSchemaFile: {
       commentDescriptions: true,
-      sortedSchema: true,
+      sortedSchema: true
     }
   })
 
