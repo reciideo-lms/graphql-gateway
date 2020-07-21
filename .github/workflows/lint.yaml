@@ -1,0 +1,28 @@
+name: Lint Code Base
+
+on:
+  push:
+
+  pull_request:
+    branches: [master]
+
+jobs:
+  lint:
+    name: Lint Code Base
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Lint Code Base
+        uses: docker://github/super-linter:v3
+        env:
+          DISABLE_ERRORS: ${{ secrets.LINT_DISABLE_ERRORS }}
+
+      - name: Upload Test Report
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-report
+          path: ${{ github.workspace }}/super-linter.report
